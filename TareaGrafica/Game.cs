@@ -5,7 +5,7 @@ using OpenTK.Input;
 
 namespace TareaGrafica
 {
-    internal class Game
+    internal class Game: GameWindow
     {
         private Escenario escenario;
         private float angle = 0.0f;
@@ -14,6 +14,7 @@ namespace TareaGrafica
         private float pitch = 0.0f; // Rotación alrededor del eje X
         private float yaw = 0.0f;   // Rotación alrededor del eje Y
         private float zoom = 2.0f;  // Distancia de la cámara al objeto
+
 
         public Game(int width, int height)
            : base(width, height, GraphicsMode.Default, "OpenTK Window")
@@ -50,8 +51,8 @@ namespace TareaGrafica
                 new Punto(-0.5f,  0.5f,  0.5f)
             };
 
-                    // Crear las caras del cubo como polígonos
-                    List<Poligono> carasDelCubo = new List<Poligono>
+            // Crear las caras del cubo como polígonos
+            List<Poligono> carasDelCubo = new List<Poligono>
             {
                 new Poligono(new List<Punto> { puntosDelCubo[0], puntosDelCubo[1], puntosDelCubo[2], puntosDelCubo[3] }, 1.0f, 0.0f, 0.0f), // Rojo
                 new Poligono(new List<Punto> { puntosDelCubo[4], puntosDelCubo[5], puntosDelCubo[6], puntosDelCubo[7] }, 0.0f, 1.0f, 0.0f), // Verde

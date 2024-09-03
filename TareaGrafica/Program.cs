@@ -1,9 +1,4 @@
-﻿
-using System;
-using TareaGrafica;
-using OpenTK;
-
-namespace TareaGrafica
+﻿namespace TareaGrafica
 {
     class Program
     {
