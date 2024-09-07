@@ -4,19 +4,19 @@ namespace TareaGrafica
 {
     internal class Objeto
     {
-        private List<Poligono> listaDePoligonos;
+        private List<Parte> listaPartes;
         private Punto centroDeMasa;
 
 
         public Objeto()
         {
-            listaDePoligonos = new List<Poligono>();
+            listaPartes = new List<Parte>();
             centroDeMasa = new Punto(0.0f, 0.0f, 0.0f); // Inicialmente en el origen
         }
 
-        public void AddPoligono(Poligono poligono)
+        public void Addparte(Parte parte)
         {
-            listaDePoligonos.Add(poligono);
+            listaPartes.Add(parte);
         }
 
         public void Dibujar()
@@ -25,9 +25,9 @@ namespace TareaGrafica
             GL.PushMatrix();
             GL.Translate(centroDeMasa.X, centroDeMasa.Y, centroDeMasa.Z);
 
-            foreach (var poligono in listaDePoligonos)
+            foreach (var parte in listaPartes)
             {
-                poligono.Dibujar();
+                parte.Dibujar();
             }
 
             GL.PopMatrix();
@@ -36,9 +36,9 @@ namespace TareaGrafica
         {
             centroDeMasa = nuevoCentro;
         }
-        public List<Poligono> GetPoligonos()
+        public List<Parte> Getpartes()
         {
-            return listaDePoligonos;
+            return listaPartes;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace TareaGrafica
+﻿using System.Globalization;
+
+namespace TareaGrafica
 {
     internal class Punto
     {
@@ -15,7 +17,7 @@
 
         public override string ToString()
         {
-            return $"({X}, {Y}, {Z})";
+            return $"{X.ToString(CultureInfo.CreateSpecificCulture("es-ES"))} {Y.ToString(CultureInfo.CreateSpecificCulture("es-ES"))} {Z.ToString(CultureInfo.CreateSpecificCulture("es-ES"))}";
         }
     }
 }

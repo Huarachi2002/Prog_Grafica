@@ -17,7 +17,7 @@ namespace TareaGrafica
 
         public void Dibujar()
         {
-            GL.Begin(PrimitiveType.Quads); // Cambiado de Polygon a Quads
+            GL.Begin(PrimitiveType.Polygon); // Cambiado de Polygon a Quads
             GL.Color3(color[0], color[1], color[2]);
 
             foreach (var punto in puntos)

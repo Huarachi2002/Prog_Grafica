@@ -39,148 +39,131 @@ namespace TareaGrafica
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadMatrix(ref projection);
 
-            List<Punto> puntosDelCubo = new List<Punto>
-            {
-                new Punto(-0.5f, -0.5f, -0.5f),
-                new Punto( 0.5f, -0.5f, -0.5f),
-                new Punto( 0.5f,  0.5f, -0.5f),
-                new Punto(-0.5f,  0.5f, -0.5f),
-                new Punto(-0.5f, -0.5f,  0.5f),
-                new Punto( 0.5f, -0.5f,  0.5f),
-                new Punto( 0.5f,  0.5f,  0.5f),
-                new Punto(-0.5f,  0.5f,  0.5f)
-            };
+            //List<Punto> puntosT = new List<Punto>
+            //{
+            //    // Parte superior de la T (barra horizontal - Frente)
+            //    new Punto(-2.0f,  1.0f,  1.0f),  // Frente - Superior Izquierda // 0
+            //    new Punto( 2.0f,  1.0f,  1.0f),  // Frente - Superior Derecha   // 1
+            //    new Punto( 2.0f,  1.2f,  1.0f),  // Frente - Inferior Derecha   // 2
+            //    new Punto(-2.0f,  1.2f,  1.0f),  // Frente - Inferior Izquierda // 3
 
-            // Crear las caras del cubo como polígonos
-            List<Poligono> carasDelCubo = new List<Poligono>
-            {
-                new Poligono(new List<Punto> { puntosDelCubo[0], puntosDelCubo[1], puntosDelCubo[2], puntosDelCubo[3] }, 1.0f, 0.0f, 0.0f), // Rojo
-                new Poligono(new List<Punto> { puntosDelCubo[4], puntosDelCubo[5], puntosDelCubo[6], puntosDelCubo[7] }, 0.0f, 1.0f, 0.0f), // Verde
-                new Poligono(new List<Punto> { puntosDelCubo[0], puntosDelCubo[1], puntosDelCubo[5], puntosDelCubo[4] }, 0.0f, 0.0f, 1.0f), // Azul
-                new Poligono(new List<Punto> { puntosDelCubo[2], puntosDelCubo[3], puntosDelCubo[7], puntosDelCubo[6] }, 1.0f, 1.0f, 0.0f), // Amarillo
-                new Poligono(new List<Punto> { puntosDelCubo[0], puntosDelCubo[3], puntosDelCubo[7], puntosDelCubo[4] }, 1.0f, 0.0f, 1.0f), // Magenta
-                new Poligono(new List<Punto> { puntosDelCubo[1], puntosDelCubo[2], puntosDelCubo[6], puntosDelCubo[5] }, 0.0f, 1.0f, 1.0f)  // Cyan
-            };
+            //    // Tronco de la T (barra vertical - Frente)
+            //    new Punto(-0.5f, -1.0f,  1.0f),  // Frente - Inferior Izquierda // 4
+            //    new Punto( 0.5f, -1.0f,  1.0f),  // Frente - Inferior Derecha   // 5
+            //    new Punto( 0.5f,  1.0f,  1.0f),  // Frente - Superior Derecha   // 6
+            //    new Punto(-0.5f,  1.0f,  1.0f),  // Frente - Superior Izquierda // 7
 
-            List<Punto> puntosDeLaT = new List<Punto>
+            //    // Parte superior de la T (barra horizontal - Atrás)  
+            //    new Punto(-2.0f,  1.0f, -1.0f),  // Atrás - Superior Izquierda  // 8
+            //    new Punto( 2.0f,  1.0f, -1.0f),  // Atrás - Superior Derecha    // 9
+            //    new Punto( 2.0f,  1.2f, -1.0f),  // Atrás - Inferior Derecha    // 10
+            //    new Punto(-2.0f,  1.2f, -1.0f),  // Atrás - Inferior Izquierda  // 11
+
+            //    // Tronco de la T (barra vertical - Atrás)
+            //    new Punto(-0.5f, -1.0f, -1.0f),  // Atrás - Inferior Izquierda  // 12
+            //    new Punto( 0.5f, -1.0f, -1.0f),  // Atrás - Inferior Derecha    // 13
+            //    new Punto( 0.5f,  1.0f, -1.0f),  // Atrás - Superior Derecha    // 14
+            //    new Punto(-0.5f,  1.0f, -1.0f),  // Atrás - Superior Izquierda  // 15
+            //};
+
+            List<Punto> puntosT = LeerObj();
+
+
+            List<Poligono> poligonosT = new List<Poligono>
             {
+
                 // Parte superior de la T (Rectángulo Horizontal - Frente)
-                new Punto(-1.0f,  0.5f,  0.1f),  // Frente - Superior Izquierda
-                new Punto( 1.0f,  0.5f,  0.1f),  // Frente - Superior Derecha
-                new Punto( 1.0f,  1.0f,  0.1f),  // Frente - Inferior Derecha
-                new Punto(-1.0f,  1.0f,  0.1f),  // Frente - Inferior Izquierda
+                new Poligono(new List<Punto> { puntosT[0], puntosT[1], puntosT[2], puntosT[3] }, 1.0f, 0.0f, 0.0f), // Rojo
 
                 // Tronco de la T (Rectángulo Vertical - Frente)
-                new Punto(-0.5f, -1.0f,  0.1f), // Frente - Inferior Izquierda
-                new Punto( 0.5f, -1.0f,  0.1f), // Frente - Inferior Derecha
-                new Punto( 0.5f,  0.5f,  0.1f), // Frente - Superior Derecha
-                new Punto(-0.5f,  0.5f,  0.1f), // Frente - Superior Izquierda
+                new Poligono(new List<Punto> { puntosT[4], puntosT[5], puntosT[6], puntosT[7] }, 0.0f, 1.0f, 0.0f), // Verde
 
                 // Parte superior de la T (Rectángulo Horizontal - Atrás)
-                new Punto(-1.0f,  0.5f, -0.1f),  // Atrás - Superior Izquierda
-                new Punto( 1.0f,  0.5f, -0.1f),  // Atrás - Superior Derecha
-                new Punto( 1.0f,  1.0f, -0.1f),  // Atrás - Inferior Derecha
-                new Punto(-1.0f,  1.0f, -0.1f),  // Atrás - Inferior Izquierda
+                new Poligono(new List<Punto> { puntosT[8], puntosT[9], puntosT[10], puntosT[11] }, 1.0f, 0.0f, 0.0f), // Rojo
 
                 // Tronco de la T (Rectángulo Vertical - Atrás)
-                new Punto(-0.5f, -1.0f, -0.1f), // Atrás - Inferior Izquierda
-                new Punto( 0.5f, -1.0f, -0.1f), // Atrás - Inferior Derecha
-                new Punto( 0.5f,  0.5f, -0.1f), // Atrás - Superior Derecha
-                new Punto(-0.5f,  0.5f, -0.1f), // Atrás - Superior Izquierda
+                new Poligono(new List<Punto> { puntosT[12], puntosT[13], puntosT[14], puntosT[15] }, 0.0f, 1.0f, 0.0f), // Verde
+
+
+                // Conexiones laterales
+                // Lado derecho superior de la T
+                new Poligono(new List<Punto> { puntosT[1], puntosT[9], puntosT[10], puntosT[2] }, 0.0f, 0.0f, 1.0f), // Azul
+                // Lado izquierdo superior de la T
+                new Poligono(new List<Punto> { puntosT[0], puntosT[8], puntosT[11], puntosT[3] }, 1.0f, 1.0f, 0.0f), // Amarillo
+                // Lado derecho del tronco de la T
+                new Poligono(new List<Punto> { puntosT[5], puntosT[13], puntosT[14], puntosT[6] }, 0.0f, 1.0f, 1.0f), // Cyan
+                // Lado izquierdo del tronco de la T
+                new Poligono(new List<Punto> { puntosT[4], puntosT[12], puntosT[15], puntosT[7] }, 1.0f, 0.0f, 1.0f), // Magenta
+                // Conexión entre la parte superior y el tronco (cara inferior)
+                 new Poligono(new List<Punto> { puntosT[8], puntosT[9], puntosT[1], puntosT[0] }, 1.0f, 0.5f, 0.5f), // Naranja
+                // Conexión entre la parte superior y el tronco (cara superior)
+                new Poligono(new List<Punto> { puntosT[10], puntosT[11], puntosT[3], puntosT[2] }, 0.5f, 1.0f, 0.5f), // Verde claro
+                // Piso de la T
+                new Poligono(new List<Punto> {puntosT[12], puntosT[13], puntosT[5], puntosT[4] }, 0.5f, 1.0f, 0.5f)
             };
 
 
-            List<Poligono> carasDeLaT = new List<Poligono>
-        {
-            // Parte superior de la T (Rectángulo Horizontal - Frente)
-            new Poligono(new List<Punto> { puntosDeLaT[0], puntosDeLaT[1], puntosDeLaT[2], puntosDeLaT[3] }, 1.0f, 0.0f, 0.0f), // Rojo
-
-            // Tronco de la T (Rectángulo Vertical - Frente)
-            new Poligono(new List<Punto> { puntosDeLaT[4], puntosDeLaT[5], puntosDeLaT[6], puntosDeLaT[7] }, 0.0f, 1.0f, 0.0f), // Verde
-
-            // Parte superior de la T (Rectángulo Horizontal - Atrás)
-            new Poligono(new List<Punto> { puntosDeLaT[8], puntosDeLaT[9], puntosDeLaT[10], puntosDeLaT[11] }, 1.0f, 0.0f, 0.0f), // Rojo
-
-            // Tronco de la T (Rectángulo Vertical - Atrás)
-            new Poligono(new List<Punto> { puntosDeLaT[12], puntosDeLaT[13], puntosDeLaT[14], puntosDeLaT[15] }, 0.0f, 1.0f, 0.0f), // Verde
-
-            // Conexiones laterales
-            // Lado derecho superior de la T
-            new Poligono(new List<Punto> { puntosDeLaT[1], puntosDeLaT[9], puntosDeLaT[10], puntosDeLaT[2] }, 0.0f, 0.0f, 1.0f), // Azul
-            // Lado izquierdo superior de la T
-            new Poligono(new List<Punto> { puntosDeLaT[0], puntosDeLaT[8], puntosDeLaT[11], puntosDeLaT[3] }, 1.0f, 1.0f, 0.0f), // Amarillo
-            // Lado derecho del tronco de la T
-            new Poligono(new List<Punto> { puntosDeLaT[5], puntosDeLaT[13], puntosDeLaT[14], puntosDeLaT[6] }, 0.0f, 1.0f, 1.0f), // Cyan
-            // Lado izquierdo del tronco de la T
-            new Poligono(new List<Punto> { puntosDeLaT[4], puntosDeLaT[12], puntosDeLaT[15], puntosDeLaT[7] }, 1.0f, 0.0f, 1.0f), // Magenta
-
-            // Conexión entre la parte superior y el tronco (cara inferior)
-            new Poligono(new List<Punto> { puntosDeLaT[3], puntosDeLaT[11], puntosDeLaT[15], puntosDeLaT[7] }, 1.0f, 0.5f, 0.5f), // Naranja
-
-                        //new Poligono(new List<Punto> { puntosDeLaT[0], puntosDeLaT[8], puntosDeLaT[12], puntosDeLaT[4] }, 0.5f, 1.0f, 0.5f), // Verde claro
-        };
-
-
-            Objeto letraT = new Objeto();
-            foreach (var cara in carasDeLaT)
+            Parte partesT = new Parte();
+            foreach (var poligono in poligonosT)
             {
-                letraT.AddPoligono(cara);
+                partesT.AddPoligono(poligono);
             }
 
-            // Crear el objeto cubo
-            Objeto cubo = new Objeto();
-            foreach (var cara in carasDelCubo)
-            {
-                cubo.AddPoligono(cara);
-            }
+            Objeto objetoT = new Objeto();
+            objetoT.Addparte(partesT);
 
-            // Establecer el centro de masa del cubo
-            cubo.SetCentroDeMasa(new Punto(2.0f, 0.0f, 0.0f));
-
-            Objeto cubo2 = new Objeto();
-            foreach (var cara in carasDelCubo)
-            {
-                cubo2.AddPoligono(cara);
-            }
-            cubo2.SetCentroDeMasa(new Punto(2.0f, 1.0f, 0.0f));
-
-            Objeto cubo3 = new Objeto();
-            foreach (var cara in carasDelCubo)
-            {
-                cubo3.AddPoligono(cara);
-            }
-            cubo3.SetCentroDeMasa(new Punto(1.0f, 2.0f, 0.0f));
-
-            Objeto cubo4 = new Objeto();
-            foreach (var cara in carasDelCubo)
-            {
-                cubo4.AddPoligono(cara);
-            }
-            cubo4.SetCentroDeMasa(new Punto(3.0f, 2.0f, 0.0f));
-
-
-
-            Objeto cubo5 = new Objeto();
-            foreach (var cara in carasDelCubo)
-            {
-                cubo5.AddPoligono(cara);
-            }
-            cubo5.SetCentroDeMasa(new Punto(2.0f, 2.0f, 0.0f));
-
-            letraT.SetCentroDeMasa(new Punto(-2.0f, 3.0f, 0.0f));
-
-
-            // Crear el escenario y agregar ambos objetos
+            // Crear el escenario y agregar objetos
             escenario = new Escenario();
-            escenario.AddObjeto(cubo);
-            escenario.AddObjeto(cubo2);
-            escenario.AddObjeto(cubo3);
-            escenario.AddObjeto(cubo4);
-            escenario.AddObjeto(cubo5);
-            escenario.AddObjeto(letraT);
-            // agregar la clase parte el objeto se debe descomponer en partes, las partes son poligonos
+            escenario.AddObjeto("T",objetoT);
+            // Guardar el objeto en un archivo .obj
+            GuardarObj(puntosT);
 
+        }
 
+        protected void GuardarObj(List<Punto> puntos)
+        {
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "modelo.obj");
+
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                foreach (var punto in puntos)
+                {
+                    writer.WriteLine(punto.ToString());
+                }
+
+                // Puedes añadir información adicional aquí como normales y caras si es necesario
+            }
+
+            Console.WriteLine("Archivo guardado en: " + filePath);
+        }
+
+        protected List<Punto> LeerObj()
+        {
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "modelo.obj");
+
+            List<Punto> puntos = new List<Punto>();
+
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    {
+                        string[] parts = line.Split(' ');
+                        float x = float.Parse(parts[0]);
+                        float y = float.Parse(parts[1]);
+                        float z = float.Parse(parts[2]);
+                        puntos.Add(new Punto(x, y, z));
+                    }
+                }
+            }
+
+            foreach (var punto in puntos)
+            {
+                Console.WriteLine(punto.ToString());
+            }
+
+            return puntos;
         }
 
         protected override void OnRenderFrame(FrameEventArgs e)
@@ -222,8 +205,6 @@ namespace TareaGrafica
 
             // Dibujar el escenario (y por ende el cubo)
             escenario.DibujarEscenario();
-            Console.WriteLine($"Zoom: {zoom}, Pitch: {pitch}, Yaw: {yaw}");
-
             SwapBuffers();
         }
 

@@ -2,27 +2,27 @@
 {
     internal class Escenario
     {
-        private List<Objeto> listaDeObjetos;
+        private Dictionary<String, Objeto> listaDeObjetos;
 
         public Escenario()
         {
-            listaDeObjetos = new List<Objeto>();
+            listaDeObjetos = new Dictionary<string, Objeto>();
         }
 
-        public void AddObjeto(Objeto objeto)
+        public void AddObjeto(String name, Objeto objeto)
         {
-            listaDeObjetos.Add(objeto);
+            listaDeObjetos.Add(name, objeto);
         }
 
         public void DibujarEscenario()
         {
-            foreach (var objeto in listaDeObjetos)
+            foreach (var objeto in listaDeObjetos.Values)
             {
-                objeto.Dibujar();
+                objeto.Dibujar();   
             }
         }
 
-        public List<Objeto> GetObjetos()
+        public Dictionary<String, Objeto> GetObjetos()
         {
             return listaDeObjetos;
         }
