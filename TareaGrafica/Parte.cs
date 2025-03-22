@@ -6,6 +6,8 @@ namespace TareaGrafica
     {
         private List<Poligono> listaPoligonos;
         private Punto centroMasa;
+        private float rotacionX, rotacionY, rotacionZ;
+
 
         public Parte()
         {
@@ -20,9 +22,11 @@ namespace TareaGrafica
 
         public void Dibujar() 
         {
-
             GL.PushMatrix();
             GL.Translate(centroMasa.X, centroMasa.Y, centroMasa.Z);
+            GL.Rotate(rotacionX, 1f, 0f, 0f);
+            GL.Rotate(rotacionY, 0f, 1f, 0f);
+            GL.Rotate(rotacionZ, 0f, 0f, 1f);
             foreach (var poligono in listaPoligonos)
             {
                 poligono.Dibujar();
@@ -30,6 +34,19 @@ namespace TareaGrafica
 
             GL.PopMatrix();
         }
+
+        public void Rotar(float? x = null, float? y = null, float? z = null)
+        {
+            if (x.HasValue)
+                rotacionX += x.Value;
+
+            if (y.HasValue)
+                rotacionY += y.Value;
+
+            if (z.HasValue)
+                rotacionZ += z.Value;
+        }
+
 
         public void SetCentroMasa(Punto newCentroMasa)
         {

@@ -100,12 +100,29 @@
                     partesU.AddPoligono(poligono);
                 }
 
-                Objeto objetoU = new Objeto();
+                Objeto objetoU = new Objeto(new Punto(2f, 2f, 0.0f));
+                //objetoU.SetCentroDeMasa(new Punto(2f, 2f, 0.0f));   
                 objetoU.Addparte(partesU);
+                objetoU.Rotar(x:20f, y:20f);
+
+                Objeto objetoU2 = new Objeto(new Punto(-2f, -2f, 0.0f));
+                //objetoU2.SetCentroDeMasa(new Punto(-2f, -2f, 0.0f));
+                objetoU2.Addparte(partesU);
+
+                Objeto objetoU3 = new Objeto(new Punto(-2f, 2f, 0.0f));
+                //objetoU3.SetCentroDeMasa(new Punto(-2f, 2f, 0.0f));
+                objetoU3.Addparte(partesU);
+
+                Objeto objetoU4 = new Objeto(new Punto(2f, -2f, 0.0f));
+                //objetoU4.SetCentroDeMasa(new Punto(2f, -2f, 0.0f));
+                objetoU4.Addparte(partesU);
 
                 // Crear el escenario y agregar objetos
                 escenario = new Escenario();
                 escenario.AddObjeto("U",objetoU);
+                escenario.AddObjeto("U2", objetoU2);
+                escenario.AddObjeto("U3", objetoU3);
+                escenario.AddObjeto("U4", objetoU4);
                 // Guardar el objeto en un archivo .obj
                 //GuardarObj(puntosU);
 
