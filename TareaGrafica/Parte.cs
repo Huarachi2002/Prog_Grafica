@@ -20,6 +20,11 @@ namespace TareaGrafica
             listaPoligonos.Add(poligono);
         }
 
+        public void RemovePoligono(Poligono poligono)
+        {
+            listaPoligonos.Remove(poligono);
+        }
+
         public void Dibujar() 
         {
             GL.PushMatrix();

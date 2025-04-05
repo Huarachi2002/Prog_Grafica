@@ -19,6 +19,11 @@ namespace TareaGrafica
             listaPartes.Add(parte);
         }
 
+        public void Removeparte(Parte parte)
+        {
+            listaPartes.Remove(parte);
+        }
+
         public void Dibujar()
         {
             // Aplicar la traslación al centro de masa antes de dibujar cada polígono
