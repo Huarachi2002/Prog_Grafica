@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Text.Json.Serialization;
 
 namespace TareaGrafica
 {
@@ -7,6 +8,14 @@ namespace TareaGrafica
         public float X { get; set; }
         public float Y { get; set; }
         public float Z { get; set; }
+
+        [JsonConstructor]
+        public Punto()
+        {
+            X = 0;
+            Y = 0;
+            Z = 0;
+        }
 
         public Punto(float x, float y, float z)
         {

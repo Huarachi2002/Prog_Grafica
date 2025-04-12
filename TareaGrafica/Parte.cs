@@ -1,18 +1,28 @@
 ﻿using OpenTK.Graphics.OpenGL;
+using System.Text.Json.Serialization;
 
 namespace TareaGrafica
 {
     internal class Parte
     {
-        private List<Poligono> listaPoligonos;
-        private Punto centroMasa;
-        private float rotacionX, rotacionY, rotacionZ;
+        public List<Poligono> listaPoligonos { get; set; }
 
+        public Punto centroMasa { get; set; }
+        public float rotacionX { get; set; }
+        public float rotacionY { get; set; }
+        public float rotacionZ { get; set; }
 
+        [JsonConstructor]
         public Parte()
         {
-            listaPoligonos = new List<Poligono>(); 
+            listaPoligonos = new List<Poligono>();
             centroMasa = new Punto(0.0f, 0.0f, 0.0f);
+        }
+
+        public Parte(Punto? centroMasa = null)
+        {
+            listaPoligonos = new List<Poligono>();
+            centroMasa = centroMasa ?? new Punto(0.0f, 0.0f, 0.0f);
         }
 
         public void AddPoligono(Poligono poligono)
@@ -32,6 +42,12 @@ namespace TareaGrafica
             GL.Rotate(rotacionX, 1f, 0f, 0f);
             GL.Rotate(rotacionY, 0f, 1f, 0f);
             GL.Rotate(rotacionZ, 0f, 0f, 1f);
+            if (listaPoligonos == null)
+            {
+                Console.WriteLine("Error: listaPoligonos es null");
+                return;
+            }
+
             foreach (var poligono in listaPoligonos)
             {
                 poligono.Dibujar();

@@ -2,7 +2,7 @@
 {
     internal class Escenario
     {
-        private Dictionary<String, Objeto> listaDeObjetos;
+        public Dictionary<String, Objeto> listaDeObjetos;
 
         public Escenario()
         {
