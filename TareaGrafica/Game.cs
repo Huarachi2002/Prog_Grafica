@@ -33,157 +33,114 @@
                 Matrix4 projection = Matrix4.CreatePerspectiveFieldOfView(
                     MathHelper.DegreesToRadians(45.0f),
                     Width / (float)Height,
-                    0.1f,  // near plane
-                    100.0f // far plane
+                    0.1f, 
+                    100.0f 
                 );
                 GL.MatrixMode(MatrixMode.Projection);
                 GL.LoadMatrix(ref projection);
 
-            //List<Punto> puntosT = LeerObj();
-            //List<Punto> puntosU = new List<Punto>
-            //    {
-            //        new Punto(-1, 1,  0.5f), // 0
-            //        new Punto( 1, 1,  0.5f), // 1
-            //        new Punto( 1, -1, 0.5f), // 2
-            //        new Punto(-1, -1, 0.5f), // 3
-            //        new Punto(-1, 1, -0.5f), // 4
-            //        new Punto( 1, 1, -0.5f), // 5
-            //        new Punto( 1, -1, -0.5f), // 6
-            //        new Punto(-1, -1, -0.5f), // 7
-            //        new Punto(-0.7f, 1,  0.5f), // 8
-            //        new Punto( 0.7f, 1,  0.5f), // 9
-            //        new Punto( 0.7f, -0.7f, 0.5f), // 10
-            //        new Punto(-0.7f, -0.7f, 0.5f), // 11
-            //        new Punto(-0.7f, 1, -0.5f), // 12
-            //        new Punto( 0.7f, 1, -0.5f), // 13
-            //        new Punto( 0.7f, -0.7f, -0.5f), // 14
-            //        new Punto(-0.7f, -0.7f, -0.5f)  // 15
-            //    };
+            List<Punto> puntosU = new List<Punto>
+                {
+                    new Punto(-1, 1,  0.5f), // 0
+                    new Punto( 1, 1,  0.5f), // 1
+                    new Punto( 1, -1, 0.5f), // 2
+                    new Punto(-1, -1, 0.5f), // 3
+                    new Punto(-1, 1, -0.5f), // 4
+                    new Punto( 1, 1, -0.5f), // 5
+                    new Punto( 1, -1, -0.5f), // 6
+                    new Punto(-1, -1, -0.5f), // 7
+                    new Punto(-0.7f, 1,  0.5f), // 8
+                    new Punto( 0.7f, 1,  0.5f), // 9
+                    new Punto( 0.7f, -0.7f, 0.5f), // 10
+                    new Punto(-0.7f, -0.7f, 0.5f), // 11
+                    new Punto(-0.7f, 1, -0.5f), // 12
+                    new Punto( 0.7f, 1, -0.5f), // 13
+                    new Punto( 0.7f, -0.7f, -0.5f), // 14
+                    new Punto(-0.7f, -0.7f, -0.5f)  // 15
+                };
 
 
-            //List<Poligono> poligonosU = new List<Poligono>
-            //    {
-            //        // Parte trasera del lado izq
-            //        new Poligono(new List<Punto> { puntosU[4], puntosU[12], puntosU[15], puntosU[7] }, 1.0f, 0.0f, 0.0f),
-            //        // Parte trasera inferior
-            //        new Poligono(new List<Punto> { puntosU[7], puntosU[15], puntosU[14], puntosU[6] }, 1.0f, 0.0f, 0.0f),
-            //        // Parte trasera del lado der
-            //        new Poligono(new List<Punto> { puntosU[13], puntosU[5], puntosU[6], puntosU[14] }, 1.0f, 0.0f, 0.0f),
-            //        // Parte delantera del lado izq
-            //        new Poligono(new List<Punto> { puntosU[0], puntosU[8], puntosU[11], puntosU[3] }, 0.0f, 1.0f, 0.0f),
-            //        // Parte delantera inferior
-            //        new Poligono(new List<Punto> { puntosU[3], puntosU[11], puntosU[10], puntosU[2] }, 0.0f, 1.0f, 0.0f),
-            //        // Parte delantera del lado der
-            //        new Poligono(new List<Punto> { puntosU[9], puntosU[1], puntosU[2], puntosU[10] }, 0.0f, 1.0f, 0.0f),
-            //        // Lado izquierdo
-            //        new Poligono(new List<Punto> { puntosU[0], puntosU[4], puntosU[7], puntosU[3] }, 0.0f, 0.0f, 1.0f),
-            //        // Lado izquierdo der
-            //        new Poligono(new List<Punto> { puntosU[8], puntosU[12], puntosU[15], puntosU[11] }, 0.0f, 0.0f, 1.0f),
-            //        // Lado derecho
-            //        new Poligono(new List<Punto> { puntosU[1], puntosU[5], puntosU[6], puntosU[2] }, 1.0f, 1.0f, 0.0f),
-            //        // Lado derecho izq
-            //        new Poligono(new List<Punto> { puntosU[9], puntosU[13], puntosU[14], puntosU[10] }, 1.0f, 1.0f, 0.0f),
-            //        // Parte inferior abajo
-            //        new Poligono(new List<Punto> { puntosU[3], puntosU[7], puntosU[6], puntosU[2] }, 1.0f, 0.0f, 1.0f),
-            //        // Parte inferior arriba
-            //        new Poligono(new List<Punto> { puntosU[11], puntosU[15], puntosU[14], puntosU[10] }, 1.0f, 0.0f, 1.0f),
-            //        // Parte superior izq
-            //        new Poligono(new List<Punto> { puntosU[0], puntosU[8], puntosU[12], puntosU[4] }, 0.0f, 1.0f, 1.0f),
-            //        // Parte superior der
-            //        new Poligono(new List<Punto> { puntosU[9], puntosU[1], puntosU[5], puntosU[13] }, 0.0f, 1.0f, 1.0f)
-            //    };
+            List<Poligono> poligonosU = new List<Poligono>
+                {
+                    // Parte trasera del lado izq
+                    new Poligono(new List<Punto> { puntosU[4], puntosU[12], puntosU[15], puntosU[7] }, 1.0f, 0.0f, 0.0f),
+                    // Parte trasera inferior
+                    new Poligono(new List<Punto> { puntosU[7], puntosU[15], puntosU[14], puntosU[6] }, 1.0f, 0.0f, 0.0f),
+                    // Parte trasera del lado der
+                    new Poligono(new List<Punto> { puntosU[13], puntosU[5], puntosU[6], puntosU[14] }, 1.0f, 0.0f, 0.0f),
+                    // Parte delantera del lado izq
+                    new Poligono(new List<Punto> { puntosU[0], puntosU[8], puntosU[11], puntosU[3] }, 0.0f, 1.0f, 0.0f),
+                    // Parte delantera inferior
+                    new Poligono(new List<Punto> { puntosU[3], puntosU[11], puntosU[10], puntosU[2] }, 0.0f, 1.0f, 0.0f),
+                    // Parte delantera del lado der
+                    new Poligono(new List<Punto> { puntosU[9], puntosU[1], puntosU[2], puntosU[10] }, 0.0f, 1.0f, 0.0f),
+                    // Lado izquierdo
+                    new Poligono(new List<Punto> { puntosU[0], puntosU[4], puntosU[7], puntosU[3] }, 0.0f, 0.0f, 1.0f),
+                    // Lado izquierdo der
+                    new Poligono(new List<Punto> { puntosU[8], puntosU[12], puntosU[15], puntosU[11] }, 0.0f, 0.0f, 1.0f),
+                    // Lado derecho
+                    new Poligono(new List<Punto> { puntosU[1], puntosU[5], puntosU[6], puntosU[2] }, 1.0f, 1.0f, 0.0f),
+                    // Lado derecho izq
+                    new Poligono(new List<Punto> { puntosU[9], puntosU[13], puntosU[14], puntosU[10] }, 1.0f, 1.0f, 0.0f),
+                    // Parte inferior abajo
+                    new Poligono(new List<Punto> { puntosU[3], puntosU[7], puntosU[6], puntosU[2] }, 1.0f, 0.0f, 1.0f),
+                    // Parte inferior arriba
+                    new Poligono(new List<Punto> { puntosU[11], puntosU[15], puntosU[14], puntosU[10] }, 1.0f, 0.0f, 1.0f),
+                    // Parte superior izq
+                    new Poligono(new List<Punto> { puntosU[0], puntosU[8], puntosU[12], puntosU[4] }, 0.0f, 1.0f, 1.0f),
+                    // Parte superior der
+                    new Poligono(new List<Punto> { puntosU[9], puntosU[1], puntosU[5], puntosU[13] }, 0.0f, 1.0f, 1.0f)
+                };
 
 
-                //Parte partesU = new Parte();
-                //foreach (var poligono in poligonosU)
-                //{
-                //    partesU.AddPoligono(poligono);
-                //}
+            Parte partesU = new Parte();
+            foreach (var poligono in poligonosU)
+            {
+                partesU.AddPoligono(poligono);
+            }
 
 
 
-            Objeto objetoU = Objeto.CargarObjeto("U1");
-
+            //Objeto objetoU = Objeto.CargarObjeto("U1");
+            Objeto objetoU = JsonHelper.DeserializeFromJson<Objeto>("U1");
             //Objeto objetoU = new Objeto();
 
             //objetoU.SetCentroDeMasa(new Punto(2f, 2f, 0.0f));
             //objetoU.Addparte(partesU);
             //objetoU.Rotar(x: 20f, y: 20f);
-            //objetoU.GuardarObjeto("U1");
+            //objetoU.Escalar(1.5f, 1.5f, 1.5f);
+            //JsonHelper.SerializeToJson(objetoU,"U1");
 
-            Objeto objetoU2 = Objeto.CargarObjeto("U2");
+            //Objeto objetoU2 = Objeto.CargarObjeto("U2");
+            Objeto objetoU2 = JsonHelper.DeserializeFromJson<Objeto>("U2");
             //Objeto objetoU2 = new Objeto();
+
             //objetoU2.SetCentroDeMasa(new Punto(-2f, -2f, 0.0f));
             //objetoU2.Addparte(partesU);
-            //objetoU2.GuardarObjeto("U2");
+            //JsonHelper.SerializeToJson(objetoU2, "U2");
 
+            //Objeto objetoU3 = Objeto.CargarObjeto("U3");
             //Objeto objetoU3 = new Objeto(new Punto(-2f, 2f, 0.0f));
-            Objeto objetoU3 = Objeto.CargarObjeto("U3");
+            Objeto objetoU3 = JsonHelper.DeserializeFromJson<Objeto>("U3");
+
             //objetoU3.SetCentroDeMasa(new Punto(-2f, 2f, 0.0f));
             //objetoU3.Addparte(partesU);
-            //objetoU3.GuardarObjeto("U3");
+            //JsonHelper.SerializeToJson(objetoU3, "U3");
 
-                //Objeto objetoU4 = new Objeto(new Punto(2f, -2f, 0.0f));
-                Objeto objetoU4 = Objeto.CargarObjeto("U4");
+            //Objeto objetoU4 = Objeto.CargarObjeto("U4");
+            //Objeto objetoU4 = new Objeto(new Punto(2f, -2f, 0.0f));
+            Objeto objetoU4 = JsonHelper.DeserializeFromJson<Objeto>("U4");
+
             //objetoU4.SetCentroDeMasa(new Punto(2f, -2f, 0.0f));
             //objetoU4.Addparte(partesU);
-            //objetoU4.GuardarObjeto("U4");
+            //JsonHelper.SerializeToJson(objetoU4, "U4");
 
-                // Crear el escenario y agregar objetos
-                escenario = new Escenario();
+            escenario = new Escenario();
                 escenario.AddObjeto("U",objetoU);
                 escenario.AddObjeto("U2", objetoU2);
                 escenario.AddObjeto("U3", objetoU3);
                 escenario.AddObjeto("U4", objetoU4);
-                // Guardar el objeto en un archivo .obj
-                //GuardarObj(puntosU);
 
-            }
-
-            protected void GuardarObj(List<Punto> puntos)
-            {
-                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "modelo.obj");
-
-                using (StreamWriter writer = new StreamWriter(filePath))
-                {
-                    foreach (var punto in puntos)
-                    {
-                        writer.WriteLine(punto.ToString());
-                    }
-
-                    // Puedes añadir información adicional aquí como normales y caras si es necesario
-                }
-
-                Console.WriteLine("Archivo guardado en: " + filePath);
-            }
-
-            protected List<Punto> LeerObj()
-            {
-                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "modelo.obj");
-
-                List<Punto> puntos = new List<Punto>();
-
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        {
-                            string[] parts = line.Split(' ');
-                            float x = float.Parse(parts[0]);
-                            float y = float.Parse(parts[1]);
-                            float z = float.Parse(parts[2]);
-                            puntos.Add(new Punto(x, y, z));
-                        }
-                    }
-                }
-
-                foreach (var punto in puntos)
-                {
-                    Console.WriteLine(punto.ToString());
-                }
-
-                return puntos;
             }
 
             protected override void OnRenderFrame(FrameEventArgs e)

@@ -11,18 +11,23 @@ namespace TareaGrafica
         public float rotacionX { get; set; }
         public float rotacionY { get; set; }
         public float rotacionZ { get; set; }
+        public float escalaX { get; set; }
+        public float escalaY { get; set; }
+        public float escalaZ { get; set; }
 
         [JsonConstructor]
         public Parte()
         {
             listaPoligonos = new List<Poligono>();
             centroMasa = new Punto(0.0f, 0.0f, 0.0f);
+            escalaX = escalaY = escalaZ = 1.0f;
         }
 
         public Parte(Punto? centroMasa = null)
         {
             listaPoligonos = new List<Poligono>();
-            centroMasa = centroMasa ?? new Punto(0.0f, 0.0f, 0.0f);
+            this.centroMasa = centroMasa ?? new Punto(0.0f, 0.0f, 0.0f);
+            escalaX = escalaY = escalaZ = 1.0f;
         }
 
         public void AddPoligono(Poligono poligono)
@@ -35,37 +40,38 @@ namespace TareaGrafica
             listaPoligonos.Remove(poligono);
         }
 
-        public void Dibujar() 
+        public void Dibujar(Transformacion transformacionObjeto)
         {
-            GL.PushMatrix();
-            GL.Translate(centroMasa.X, centroMasa.Y, centroMasa.Z);
-            GL.Rotate(rotacionX, 1f, 0f, 0f);
-            GL.Rotate(rotacionY, 0f, 1f, 0f);
-            GL.Rotate(rotacionZ, 0f, 0f, 1f);
             if (listaPoligonos == null)
             {
                 Console.WriteLine("Error: listaPoligonos es null");
                 return;
             }
 
+            Transformacion transformacionParte = new Transformacion
+            {
+                Traslacion = centroMasa,
+                RotacionX = rotacionX,
+                RotacionY = rotacionY,
+                RotacionZ = rotacionZ,
+                EscalaX = escalaX,
+                EscalaY = escalaY,
+                EscalaZ = escalaZ
+            };
+
+            Transformacion transformacionFinal = transformacionObjeto.Combinar(transformacionParte);
+
             foreach (var poligono in listaPoligonos)
             {
-                poligono.Dibujar();
+                poligono.Dibujar(transformacionFinal);
             }
-
-            GL.PopMatrix();
         }
 
         public void Rotar(float? x = null, float? y = null, float? z = null)
         {
-            if (x.HasValue)
-                rotacionX += x.Value;
-
-            if (y.HasValue)
-                rotacionY += y.Value;
-
-            if (z.HasValue)
-                rotacionZ += z.Value;
+            if (x.HasValue) rotacionX += x.Value;
+            if (y.HasValue) rotacionY += y.Value;
+            if (z.HasValue) rotacionZ += z.Value;
         }
 
 

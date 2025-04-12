@@ -16,13 +16,17 @@ namespace TareaGrafica
             IncludeFields = true,
         };
 
-        public static bool SerializeToJson<T>(T obj, string filePath)
+        public static bool SerializeToJson<T>(T obj, string nameFile)
         {
             try
             {
+                string carpetaDatos = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+                Directory.CreateDirectory(carpetaDatos);
+                string rutaCompleta = Path.Combine(carpetaDatos, $"{nameFile}.json");
+
                 string jsonString = JsonSerializer.Serialize(obj, _options);
-                File.WriteAllText(filePath, jsonString);
-                Console.WriteLine(filePath);
+                File.WriteAllText(rutaCompleta, jsonString);
+                Console.WriteLine(rutaCompleta);
                 return true;
             }
             catch (Exception ex)
@@ -32,11 +36,20 @@ namespace TareaGrafica
             }
         }
 
-        public static T DeserializeFromJson<T>(string filePath)
+        public static T DeserializeFromJson<T>(string nameFile)
         {
             try
             {
-                string jsonString = File.ReadAllText(filePath);
+                string carpetaDatos = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+                string rutaCompleta = Path.Combine(carpetaDatos, $"{nameFile}.json");
+
+                if (!File.Exists(rutaCompleta))
+                {
+                    Console.WriteLine($"El archivo {rutaCompleta} no existe");
+                    return default;
+                }
+
+                string jsonString = File.ReadAllText(rutaCompleta);
                 Console.WriteLine($"Contenido JSON leído ({jsonString.Length} bytes)");
 
                 return JsonSerializer.Deserialize<T>(jsonString, _options);

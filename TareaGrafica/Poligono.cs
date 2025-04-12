@@ -20,18 +20,37 @@ namespace TareaGrafica
         {
             this.puntos = puntos;
             this.color = new float[] { r, g, b };
-            //this.primitiveType.LineLoop
         }
 
 
-        public void Dibujar()
+        public void Dibujar(Transformacion transformacion)
         {
             if (puntos == null || color == null)
             {
                 Console.WriteLine("Error: Datos nulos en Poligono.Dibujar()");
                 return;
             }
-            GL.Begin(PrimitiveType.Polygon); // Cambiado de Polygon a Quads
+
+            // Aplicar todas las transformaciones recibidas
+            GL.PushMatrix();
+
+            // Aplicar traslación
+            GL.Translate(
+                transformacion.Traslacion.X,
+                transformacion.Traslacion.Y,
+                transformacion.Traslacion.Z
+            );
+
+            // Aplicar rotaciones
+            GL.Rotate(transformacion.RotacionX, 1f, 0f, 0f);
+            GL.Rotate(transformacion.RotacionY, 0f, 1f, 0f);
+            GL.Rotate(transformacion.RotacionZ, 0f, 0f, 1f);
+
+            // Aplicar escalas (si se implementa)
+            GL.Scale(transformacion.EscalaX, transformacion.EscalaY, transformacion.EscalaZ);
+
+            // Dibujar el polígono
+            GL.Begin(PrimitiveType.Polygon);
             GL.Color3(color[0], color[1], color[2]);
 
             foreach (var punto in puntos)
@@ -40,7 +59,31 @@ namespace TareaGrafica
             }
 
             GL.End();
+
+            GL.PopMatrix();
         }
+
+
+        public static void PushMatrix()
+        {
+            GL.PushMatrix();
+        }
+
+        public static void PopMatrix()
+        {
+            GL.PopMatrix();
+        }
+
+        public static void Translate(float x, float y, float z)
+        {
+            GL.Translate(x, y, z);
+        }
+
+        public static void Rotate(float angulo, float x, float y, float z)
+        {
+            GL.Rotate(angulo, x, y, z);
+        }
+
 
         public List<Punto> GetPuntos()
         {
