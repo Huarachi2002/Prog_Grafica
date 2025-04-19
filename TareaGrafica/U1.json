@@ -1,6 +1,6 @@
 {
-  "listaPartes": [
-    {
+  "listaPartes": {
+    "parteU": {
       "listaPoligonos": [
         {
           "puntos": [
@@ -421,7 +421,7 @@
       "escalaY": 1,
       "escalaZ": 1
     }
-  ],
+  },
   "centroDeMasa": {
     "X": 2,
     "Y": 2,
@@ -430,7 +430,7 @@
   "rotacionX": 20,
   "rotacionY": 20,
   "rotacionZ": 0,
-  "escalaX": 2.5,
-  "escalaY": 2.5,
-  "escalaZ": 2.5
+  "escalaX": 1.5,
+  "escalaY": 1.5,
+  "escalaZ": 1.5
 }

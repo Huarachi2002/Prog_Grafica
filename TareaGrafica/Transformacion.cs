@@ -8,7 +8,9 @@ namespace TareaGrafica
 {
     internal class Transformacion
     {
-        public Punto Traslacion { get; set; }
+        public float TraslacionX { get; set; }
+        public float TraslacionY { get; set; }
+        public float TraslacionZ { get; set; }
         public float RotacionX { get; set; }
         public float RotacionY { get; set; }
         public float RotacionZ { get; set; }
@@ -18,7 +20,9 @@ namespace TareaGrafica
 
         public Transformacion()
         {
-            Traslacion = new Punto(0, 0, 0);
+            TraslacionX = 0;
+            TraslacionY = 0;
+            TraslacionZ = 0;
             RotacionX = 0;
             RotacionY = 0;
             RotacionZ = 0;
@@ -33,11 +37,9 @@ namespace TareaGrafica
             Transformacion resultado = new Transformacion();
 
             // Suma las traslaciones
-            resultado.Traslacion = new Punto(
-                this.Traslacion.X + otra.Traslacion.X,
-                this.Traslacion.Y + otra.Traslacion.Y,
-                this.Traslacion.Z + otra.Traslacion.Z
-            );
+            resultado.TraslacionX = this.TraslacionX + otra.TraslacionX;
+            resultado.TraslacionY = this.TraslacionY + otra.TraslacionY;
+            resultado.TraslacionZ = this.TraslacionZ + otra.TraslacionZ;
 
             // Suma las rotaciones
             resultado.RotacionX = this.RotacionX + otra.RotacionX;

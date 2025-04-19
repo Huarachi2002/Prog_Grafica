@@ -33,21 +33,21 @@ namespace TareaGrafica
 
             // Aplicar todas las transformaciones recibidas
             GL.PushMatrix();
-
-            // Aplicar traslación
-            GL.Translate(
-                transformacion.Traslacion.X,
-                transformacion.Traslacion.Y,
-                transformacion.Traslacion.Z
-            );
+            
+            // Aplicar escalas (si se implementa)
+            GL.Scale(transformacion.EscalaX, transformacion.EscalaY, transformacion.EscalaZ);
 
             // Aplicar rotaciones
             GL.Rotate(transformacion.RotacionX, 1f, 0f, 0f);
             GL.Rotate(transformacion.RotacionY, 0f, 1f, 0f);
             GL.Rotate(transformacion.RotacionZ, 0f, 0f, 1f);
-
-            // Aplicar escalas (si se implementa)
-            GL.Scale(transformacion.EscalaX, transformacion.EscalaY, transformacion.EscalaZ);
+            
+            // Aplicar traslación
+            GL.Translate(
+                transformacion.TraslacionX,
+                transformacion.TraslacionY,
+                transformacion.TraslacionZ
+            );
 
             // Dibujar el polígono
             GL.Begin(PrimitiveType.Polygon);

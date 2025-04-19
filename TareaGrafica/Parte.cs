@@ -21,6 +21,7 @@ namespace TareaGrafica
             listaPoligonos = new List<Poligono>();
             centroMasa = new Punto(0.0f, 0.0f, 0.0f);
             escalaX = escalaY = escalaZ = 1.0f;
+            rotacionX = rotacionY = rotacionZ = 0.0f;
         }
 
         public Parte(Punto? centroMasa = null)
@@ -28,6 +29,7 @@ namespace TareaGrafica
             listaPoligonos = new List<Poligono>();
             this.centroMasa = centroMasa ?? new Punto(0.0f, 0.0f, 0.0f);
             escalaX = escalaY = escalaZ = 1.0f;
+            rotacionX = rotacionY = rotacionZ = 0.0f;
         }
 
         public void AddPoligono(Poligono poligono)
@@ -50,7 +52,9 @@ namespace TareaGrafica
 
             Transformacion transformacionParte = new Transformacion
             {
-                Traslacion = centroMasa,
+                TraslacionX = centroMasa.X,
+                TraslacionY = centroMasa.Y,
+                TraslacionZ = centroMasa.Z,
                 RotacionX = rotacionX,
                 RotacionY = rotacionY,
                 RotacionZ = rotacionZ,
@@ -72,6 +76,13 @@ namespace TareaGrafica
             if (x.HasValue) rotacionX += x.Value;
             if (y.HasValue) rotacionY += y.Value;
             if (z.HasValue) rotacionZ += z.Value;
+        }
+
+        public void Escalar(float? x = null, float? y = null, float? z = null)
+        {
+            if (x.HasValue) escalaX *= x.Value;
+            if (y.HasValue) escalaY *= y.Value;
+            if (z.HasValue) escalaZ *= z.Value;
         }
 
 
