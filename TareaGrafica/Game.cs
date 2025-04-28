@@ -51,71 +51,184 @@ namespace TareaGrafica
                 GL.MatrixMode(MatrixMode.Projection);
                 GL.LoadMatrix(ref projection);
 
-                //List<Punto> puntosU = new List<Punto>
-                //{
-                //    new Punto(-1, 1,  0.5f), // 0
-                //    new Punto( 1, 1,  0.5f), // 1
-                //    new Punto( 1, -1, 0.5f), // 2
-                //    new Punto(-1, -1, 0.5f), // 3
-                //    new Punto(-1, 1, -0.5f), // 4
-                //    new Punto( 1, 1, -0.5f), // 5
-                //    new Punto( 1, -1, -0.5f), // 6
-                //    new Punto(-1, -1, -0.5f), // 7
-                //    new Punto(-0.7f, 1,  0.5f), // 8
-                //    new Punto( 0.7f, 1,  0.5f), // 9
-                //    new Punto( 0.7f, -0.7f, 0.5f), // 10
-                //    new Punto(-0.7f, -0.7f, 0.5f), // 11
-                //    new Punto(-0.7f, 1, -0.5f), // 12
-                //    new Punto( 0.7f, 1, -0.5f), // 13
-                //    new Punto( 0.7f, -0.7f, -0.5f), // 14
-                //    new Punto(-0.7f, -0.7f, -0.5f)  // 15
-                //};
+            //List<Punto> puntosU = new List<Punto>
+            //    {
+            //        new Punto(-1, 1,  0.5f), // 0
+            //        new Punto( 1, 1,  0.5f), // 1
+            //        new Punto( 1, -1, 0.5f), // 2
+            //        new Punto(-1, -1, 0.5f), // 3
+            //        new Punto(-1, 1, -0.5f), // 4
+            //        new Punto( 1, 1, -0.5f), // 5
+            //        new Punto( 1, -1, -0.5f), // 6
+            //        new Punto(-1, -1, -0.5f), // 7
+            //        new Punto(-0.7f, 1,  0.5f), // 8
+            //        new Punto( 0.7f, 1,  0.5f), // 9
+            //        new Punto( 0.7f, -0.7f, 0.5f), // 10
+            //        new Punto(-0.7f, -0.7f, 0.5f), // 11
+            //        new Punto(-0.7f, 1, -0.5f), // 12
+            //        new Punto( 0.7f, 1, -0.5f), // 13
+            //        new Punto( 0.7f, -0.7f, -0.5f), // 14
+            //        new Punto(-0.7f, -0.7f, -0.5f)  // 15
+            //    };
 
 
-                //List<Poligono> poligonosU = new List<Poligono>
-                //{
-                //    // Parte trasera del lado izq
-                //    new Poligono(new List<Punto> { puntosU[4], puntosU[12], puntosU[15], puntosU[7] }, 1.0f, 0.0f, 0.0f),
-                //    // Parte trasera inferior
-                //    new Poligono(new List<Punto> { puntosU[7], puntosU[15], puntosU[14], puntosU[6] }, 1.0f, 0.0f, 0.0f),
-                //    // Parte trasera del lado der
-                //    new Poligono(new List<Punto> { puntosU[13], puntosU[5], puntosU[6], puntosU[14] }, 1.0f, 0.0f, 0.0f),
-                //    // Parte delantera del lado izq
-                //    new Poligono(new List<Punto> { puntosU[0], puntosU[8], puntosU[11], puntosU[3] }, 0.0f, 1.0f, 0.0f),
-                //    // Parte delantera inferior
-                //    new Poligono(new List<Punto> { puntosU[3], puntosU[11], puntosU[10], puntosU[2] }, 0.0f, 1.0f, 0.0f),
-                //    // Parte delantera del lado der
-                //    new Poligono(new List<Punto> { puntosU[9], puntosU[1], puntosU[2], puntosU[10] }, 0.0f, 1.0f, 0.0f),
-                //    // Lado izquierdo
-                //    new Poligono(new List<Punto> { puntosU[0], puntosU[4], puntosU[7], puntosU[3] }, 0.0f, 0.0f, 1.0f),
-                //    // Lado izquierdo der
-                //    new Poligono(new List<Punto> { puntosU[8], puntosU[12], puntosU[15], puntosU[11] }, 0.0f, 0.0f, 1.0f),
-                //    // Lado derecho
-                //    new Poligono(new List<Punto> { puntosU[1], puntosU[5], puntosU[6], puntosU[2] }, 1.0f, 1.0f, 0.0f),
-                //    // Lado derecho izq
-                //    new Poligono(new List<Punto> { puntosU[9], puntosU[13], puntosU[14], puntosU[10] }, 1.0f, 1.0f, 0.0f),
-                //    // Parte inferior abajo
-                //    new Poligono(new List<Punto> { puntosU[3], puntosU[7], puntosU[6], puntosU[2] }, 1.0f, 0.0f, 1.0f),
-                //    // Parte inferior arriba
-                //    new Poligono(new List<Punto> { puntosU[11], puntosU[15], puntosU[14], puntosU[10] }, 1.0f, 0.0f, 1.0f),
-                //    // Parte superior izq
-                //    new Poligono(new List<Punto> { puntosU[0], puntosU[8], puntosU[12], puntosU[4] }, 0.0f, 1.0f, 1.0f),
-                //    // Parte superior der
-                //    new Poligono(new List<Punto> { puntosU[9], puntosU[1], puntosU[5], puntosU[13] }, 0.0f, 1.0f, 1.0f)
-                //};
+            //List<Poligono> poligonosU = new List<Poligono>
+            //    {
+            //        // Parte trasera del lado izq
+            //        new Poligono(new List<Punto> { puntosU[4], puntosU[12], puntosU[15], puntosU[7] }, 1.0f, 0.0f, 0.0f),
+            //        // Parte trasera inferior
+            //        new Poligono(new List<Punto> { puntosU[7], puntosU[15], puntosU[14], puntosU[6] }, 1.0f, 0.0f, 0.0f),
+            //        // Parte trasera del lado der
+            //        new Poligono(new List<Punto> { puntosU[13], puntosU[5], puntosU[6], puntosU[14] }, 1.0f, 0.0f, 0.0f),
+            //        // Parte delantera del lado izq
+            //        new Poligono(new List<Punto> { puntosU[0], puntosU[8], puntosU[11], puntosU[3] }, 0.0f, 1.0f, 0.0f),
+            //        // Parte delantera inferior
+            //        new Poligono(new List<Punto> { puntosU[3], puntosU[11], puntosU[10], puntosU[2] }, 0.0f, 1.0f, 0.0f),
+            //        // Parte delantera del lado der
+            //        new Poligono(new List<Punto> { puntosU[9], puntosU[1], puntosU[2], puntosU[10] }, 0.0f, 1.0f, 0.0f),
+            //        // Lado izquierdo
+            //        new Poligono(new List<Punto> { puntosU[0], puntosU[4], puntosU[7], puntosU[3] }, 0.0f, 0.0f, 1.0f),
+            //        // Lado izquierdo der
+            //        new Poligono(new List<Punto> { puntosU[8], puntosU[12], puntosU[15], puntosU[11] }, 0.0f, 0.0f, 1.0f),
+            //        // Lado derecho
+            //        new Poligono(new List<Punto> { puntosU[1], puntosU[5], puntosU[6], puntosU[2] }, 1.0f, 1.0f, 0.0f),
+            //        // Lado derecho izq
+            //        new Poligono(new List<Punto> { puntosU[9], puntosU[13], puntosU[14], puntosU[10] }, 1.0f, 1.0f, 0.0f),
+            //        // Parte inferior abajo
+            //        new Poligono(new List<Punto> { puntosU[3], puntosU[7], puntosU[6], puntosU[2] }, 1.0f, 0.0f, 1.0f),
+            //        // Parte inferior arriba
+            //        new Poligono(new List<Punto> { puntosU[11], puntosU[15], puntosU[14], puntosU[10] }, 1.0f, 0.0f, 1.0f),
+            //        // Parte superior izq
+            //        new Poligono(new List<Punto> { puntosU[0], puntosU[8], puntosU[12], puntosU[4] }, 0.0f, 1.0f, 1.0f),
+            //        // Parte superior der
+            //        new Poligono(new List<Punto> { puntosU[9], puntosU[1], puntosU[5], puntosU[13] }, 0.0f, 1.0f, 1.0f)
+            //    };
 
 
-                //Parte partesU = new Parte();
-                //foreach (var poligono in poligonosU)
-                //{
-                //    partesU.AddPoligono(poligono);
-                //}
+            //Parte partesU = new Parte();
+            //foreach (var poligono in poligonosU)
+            //{
+            //    partesU.AddPoligono(poligono);
+            //}
+
+            // ----------------- PARTE IZQUIERDA DE LA U -----------------
+            List<Punto> puntosIzquierda = new List<Punto>
+            {
+                new Punto(-1.0f,  1.0f,  0.5f), // 0 - Esquina superior frontal izquierda
+                new Punto(-0.7f,  1.0f,  0.5f), // 1 - Esquina superior frontal derecha
+                new Punto(-0.7f, -0.7f,  0.5f), // 2 - Esquina inferior frontal derecha
+                new Punto(-1.0f, -0.7f,  0.5f), // 3 - Esquina inferior frontal izquierda
+                new Punto(-1.0f,  1.0f, -0.5f), // 4 - Esquina superior trasera izquierda
+                new Punto(-0.7f,  1.0f, -0.5f), // 5 - Esquina superior trasera derecha
+                new Punto(-0.7f, -0.7f, -0.5f), // 6 - Esquina inferior trasera derecha
+                new Punto(-1.0f, -0.7f, -0.5f)  // 7 - Esquina inferior trasera izquierda
+            };
+
+                    List<Poligono> poligonosIzquierda = new List<Poligono>
+            {
+                // Cara frontal
+                new Poligono(new List<Punto> { puntosIzquierda[0], puntosIzquierda[1], puntosIzquierda[2], puntosIzquierda[3] }, 0.0f, 0.6f, 0.0f),
+                // Cara trasera
+                new Poligono(new List<Punto> { puntosIzquierda[4], puntosIzquierda[7], puntosIzquierda[6], puntosIzquierda[5] }, 0.0f, 0.6f, 0.0f),
+                // Cara izquierda
+                new Poligono(new List<Punto> { puntosIzquierda[0], puntosIzquierda[3], puntosIzquierda[7], puntosIzquierda[4] }, 0.0f, 0.4f, 0.0f),
+                // Cara derecha
+                new Poligono(new List<Punto> { puntosIzquierda[1], puntosIzquierda[5], puntosIzquierda[6], puntosIzquierda[2] }, 0.0f, 0.4f, 0.0f),
+                // Cara superior
+                new Poligono(new List<Punto> { puntosIzquierda[0], puntosIzquierda[4], puntosIzquierda[5], puntosIzquierda[1] }, 0.0f, 0.8f, 0.0f),
+                // Cara inferior
+                new Poligono(new List<Punto> { puntosIzquierda[3], puntosIzquierda[2], puntosIzquierda[6], puntosIzquierda[7] }, 0.0f, 0.8f, 0.0f)
+            };
+
+            Parte parteIzquierda = new Parte();
+            foreach (var poligono in poligonosIzquierda)
+            {
+                parteIzquierda.AddPoligono(poligono);
+            }
+
+            // ----------------- PARTE DERECHA DE LA U -----------------
+            List<Punto> puntosDerecha = new List<Punto>
+            {
+                new Punto(0.7f,  1.0f,  0.5f), // 0 - Esquina superior frontal izquierda
+                new Punto(1.0f,  1.0f,  0.5f), // 1 - Esquina superior frontal derecha
+                new Punto(1.0f, -0.7f,  0.5f), // 2 - Esquina inferior frontal derecha
+                new Punto(0.7f, -0.7f,  0.5f), // 3 - Esquina inferior frontal izquierda
+                new Punto(0.7f,  1.0f, -0.5f), // 4 - Esquina superior trasera izquierda
+                new Punto(1.0f,  1.0f, -0.5f), // 5 - Esquina superior trasera derecha
+                new Punto(1.0f, -0.7f, -0.5f), // 6 - Esquina inferior trasera derecha
+                new Punto(0.7f, -0.7f, -0.5f)  // 7 - Esquina inferior trasera izquierda
+            };
+
+                    List<Poligono> poligonosDerecha = new List<Poligono>
+            {
+                // Cara frontal
+                new Poligono(new List<Punto> { puntosDerecha[0], puntosDerecha[1], puntosDerecha[2], puntosDerecha[3] }, 0.8f, 0.0f, 0.0f),
+                // Cara trasera
+                new Poligono(new List<Punto> { puntosDerecha[4], puntosDerecha[7], puntosDerecha[6], puntosDerecha[5] }, 0.8f, 0.0f, 0.0f),
+                // Cara izquierda
+                new Poligono(new List<Punto> { puntosDerecha[0], puntosDerecha[3], puntosDerecha[7], puntosDerecha[4] }, 0.6f, 0.0f, 0.0f),
+                // Cara derecha
+                new Poligono(new List<Punto> { puntosDerecha[1], puntosDerecha[5], puntosDerecha[6], puntosDerecha[2] }, 0.6f, 0.0f, 0.0f),
+                // Cara superior
+                new Poligono(new List<Punto> { puntosDerecha[0], puntosDerecha[4], puntosDerecha[5], puntosDerecha[1] }, 1.0f, 0.0f, 0.0f),
+                // Cara inferior
+                new Poligono(new List<Punto> { puntosDerecha[3], puntosDerecha[2], puntosDerecha[6], puntosDerecha[7] }, 1.0f, 0.0f, 0.0f)
+            };
+
+                    Parte parteDerecha = new Parte();
+                    foreach (var poligono in poligonosDerecha)
+                    {
+                        parteDerecha.AddPoligono(poligono);
+                    }
+
+                    // ----------------- PARTE BASE DE LA U -----------------
+                    List<Punto> puntosBase = new List<Punto>
+            {
+                new Punto(-0.7f, -0.7f,  0.5f), // 0 - Esquina superior frontal izquierda
+                new Punto( 0.7f, -0.7f,  0.5f), // 1 - Esquina superior frontal derecha
+                new Punto( 0.7f, -1.0f,  0.5f), // 2 - Esquina inferior frontal derecha
+                new Punto(-0.7f, -1.0f,  0.5f), // 3 - Esquina inferior frontal izquierda
+                new Punto(-0.7f, -0.7f, -0.5f), // 4 - Esquina superior trasera izquierda
+                new Punto( 0.7f, -0.7f, -0.5f), // 5 - Esquina superior trasera derecha
+                new Punto( 0.7f, -1.0f, -0.5f), // 6 - Esquina inferior trasera derecha
+                new Punto(-0.7f, -1.0f, -0.5f)  // 7 - Esquina inferior trasera izquierda
+            };
+
+                    List<Poligono> poligonosBase = new List<Poligono>
+            {
+                // Cara frontal
+                new Poligono(new List<Punto> { puntosBase[0], puntosBase[1], puntosBase[2], puntosBase[3] }, 0.0f, 0.0f, 0.8f),
+                // Cara trasera
+                new Poligono(new List<Punto> { puntosBase[4], puntosBase[7], puntosBase[6], puntosBase[5] }, 0.0f, 0.0f, 0.8f),
+                // Cara izquierda
+                new Poligono(new List<Punto> { puntosBase[0], puntosBase[3], puntosBase[7], puntosBase[4] }, 0.0f, 0.0f, 0.6f),
+                // Cara derecha
+                new Poligono(new List<Punto> { puntosBase[1], puntosBase[5], puntosBase[6], puntosBase[2] }, 0.0f, 0.0f, 0.6f),
+                // Cara superior
+                new Poligono(new List<Punto> { puntosBase[0], puntosBase[4], puntosBase[5], puntosBase[1] }, 0.0f, 0.0f, 1.0f),
+                // Cara inferior
+                new Poligono(new List<Punto> { puntosBase[3], puntosBase[2], puntosBase[6], puntosBase[7] }, 0.0f, 0.0f, 1.0f)
+            };
+
+                    Parte parteBase = new Parte();
+                    foreach (var poligono in poligonosBase)
+                    {
+                        parteBase.AddPoligono(poligono);
+                    }
 
 
 
-            Objeto objetoU = JsonHelper.DeserializeFromJson<Objeto>("U1");
+            //Objeto objetoU = JsonHelper.DeserializeFromJson<Objeto>("U1");
 
-            //Objeto objetoU = new Objeto();
+            Objeto objetoU = new Objeto();
+            parteIzquierda.Transformacion(trasladar: new Punto(0.3f, 0.0f, 0.0f));
+            parteDerecha.Transformacion(trasladar: new Punto(-0.3f, 0.0f, 0.0f));
+            objetoU.Addparte("LadoIzquierdo", parteIzquierda);
+            objetoU.Addparte("LadoDerecho", parteDerecha);
+            objetoU.Addparte("Base", parteBase);
+
+            objetoU.GetParteByKey("LadoIzquierdo").Transformacion(rotar: new Punto(0.0f, 90.0f, 0.0f));
+
             //objetoU.SetCentroDeMasa(new Punto(2f, 2f, 0.0f));
             //objetoU.Addparte("parteU",partesU);
             //objetoU.Rotar(x: 20f, y: 20f);
@@ -123,6 +236,7 @@ namespace TareaGrafica
             //JsonHelper.SerializeToJson(objetoU, "U1");
 
             Objeto objetoU2 = JsonHelper.DeserializeFromJson<Objeto>("U2");
+            objetoU2.Transformacion(rotar: new Punto(90.0f, 0.0f, 0.0f));
 
             //Objeto objetoU2 = new Objeto();
             //objetoU2.SetCentroDeMasa(new Punto(-2f, -2f, 0.0f));
@@ -138,7 +252,7 @@ namespace TareaGrafica
 
             Objeto objetoU4 = JsonHelper.DeserializeFromJson<Objeto>("U4");
             objetoU4.SetCentroDeMasa(new Punto(3.0f, 0.0f, 0.0f));
-            objetoU4.Escalar(0.5f, 1.0f, .5f);
+            //objetoU4.Escalar(0.5f, 1.0f, .5f);
 
             //Objeto objetoU4 = new Objeto(new Punto(2f, -2f, 0.0f));
             //objetoU4.SetCentroDeMasa(new Punto(2f, -2f, 0.0f));
@@ -150,8 +264,9 @@ namespace TareaGrafica
                 escenario.AddObjeto("U2", objetoU2);
                 escenario.AddObjeto("U3", objetoU3);
                 escenario.AddObjeto("U4", objetoU4);
-                //escenario.Trasladar(1.5f, 0.0f, 0.0f);
-                //escenario.Rotar(0.0f, 0.0f, 90.0f);
+            //escenario.Trasladar(1.5f, 0.0f, 0.0f);
+            //escenario.Rotar(0.0f, 0.0f, 90.0f);
+            //escenario.Traformacion(rotar: new Punto(90.0f, 0.0f, 0.0f));
 
             JsonHelper.SerializeToJson(escenario, "Escenario");
 
@@ -205,10 +320,6 @@ namespace TareaGrafica
             // Dibujar el escenario (y por ende el cubo)
             escenario.DibujarEscenario();
 
-            // Actualizar ImGui
-            //imGuiController.Update((float)e.Time);
-            //sidebar.Render();
-            //imGuiController.Render();
             SwapBuffers();
             }
 
@@ -288,20 +399,7 @@ namespace TareaGrafica
                 yaw += delta.X * 0.5f;  // Ajustar sensibilidad
                 pitch += delta.Y * 0.5f; // Invertir si quieres mover el mouse hacia abajo para mover la cámara hacia arriba
             }
-            //_mousePosition = new Vector2(e.X, e.Y);
-            //imGuiController.SetMousePosition(e.X, e.Y);
-            //ImGuiIOPtr io = ImGui.GetIO();
-            //if (_leftMouseDown && !io.WantCaptureMouse)
-            //{
-            //    Vector2 delta = new Vector2(e.X, e.Y) - lastMousePos;
-            //    lastMousePos = new Vector2(e.X, e.Y);
-
-            //    yaw += delta.X * 0.5f;
-            //    pitch += delta.Y * 0.5f;
-            //}
-
-            //// Actualizar la última posición del mouse en cualquier caso
-            //lastMousePos = new Vector2(e.X, e.Y);
+            
         }
 
             protected override void OnResize(EventArgs e)
@@ -314,41 +412,10 @@ namespace TareaGrafica
             protected override void OnUpdateFrame(FrameEventArgs e)
             {
                 base.OnUpdateFrame(e);
-                // Lógica de actualización, como manejar la entrada del usuario, se coloca aquí
+                
+                
             }
-        //    protected override void OnKeyPress(KeyPressEventArgs e)
-        //    {
-        //        base.OnKeyPress(e);
-
-        //        // Pasar eventos de texto a ImGui
-        //        imGuiController.PressChar(e.KeyChar);
-        //    }
-
-        //    protected override void OnKeyDown(KeyboardKeyEventArgs e)
-        //    {
-        //        base.OnKeyDown(e);
-
-        //        imGuiController.SetKeyModifiers(
-        //            e.Control,
-        //            e.Alt,
-        //            e.Shift
-        //        );
-        //    }
-
-        //protected override void OnKeyUp(KeyboardKeyEventArgs e)
-        //{
-        //    base.OnKeyUp(e);
-
-        //    // Obtener el estado actual del teclado
-        //    var keyboardState = Keyboard.GetState();
-
-        //    // Configurar los modificadores de tecla en ImGuiController
-        //    imGuiController.SetKeyModifiers(
-        //        keyboardState.IsKeyDown(Key.LControl) || keyboardState.IsKeyDown(Key.RControl), // Control
-        //        keyboardState.IsKeyDown(Key.LAlt) || keyboardState.IsKeyDown(Key.RAlt),       // Alt
-        //        keyboardState.IsKeyDown(Key.LShift) || keyboardState.IsKeyDown(Key.RShift)    // Shift
-        //    );
-        //}
-
-    }
+        
+            
+        }
     }

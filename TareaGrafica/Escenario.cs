@@ -3,6 +3,8 @@
     internal class Escenario
     {
         public Dictionary<String, Objeto> listaDeObjetos { get; set; }
+
+        public Punto centroDeMasa { get; set; }
         public float rotacionX { get; set; }
         public float rotacionY { get; set; }
         public float rotacionZ { get; set; }
@@ -16,6 +18,16 @@
         public Escenario()
         {
             listaDeObjetos = new Dictionary<string, Objeto>();
+            centroDeMasa = new Punto(0.0f, 0.0f, 0.0f);
+            traslacionX = traslacionY = traslacionZ = 0.0f;
+            rotacionX = rotacionY = rotacionZ = 0.0f;
+            escalaX = escalaY = escalaZ = 1.0f;
+        }
+
+        public Escenario(Punto? centroMasa = null)
+        {
+            listaDeObjetos = new Dictionary<string, Objeto>();
+            centroDeMasa = centroMasa ?? new Punto(0.0f, 0.0f, 0.0f);
             traslacionX = traslacionY = traslacionZ = 0.0f;
             rotacionX = rotacionY = rotacionZ = 0.0f;
             escalaX = escalaY = escalaZ = 1.0f;
@@ -56,6 +68,31 @@
                 objeto.Dibujar(transformacionEscenario);   
             }
         }
+
+        public void Traformacion(Punto rotar = null, Punto escalar = null, Punto trasladar = null)
+        {
+            if (rotar != null)
+            {
+                rotacionX = rotar.X;
+                rotacionY = rotar.Y;
+                rotacionZ = rotar.Z;
+            }
+            
+            if(escalar != null)
+            {
+                escalaX = escalar.X;
+                escalaY = escalar.Y;
+                escalaZ = escalar.Z;
+            }
+
+            if(trasladar != null)
+            {
+                traslacionX = trasladar.X;
+                traslacionY = trasladar.Y;
+                traslacionZ = trasladar.Z;
+            }
+        }
+
 
         public void Rotar(float? x = null, float? y = null, float? z = null)
         {

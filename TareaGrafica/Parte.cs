@@ -71,6 +71,30 @@ namespace TareaGrafica
             }
         }
 
+        public void Transformacion(Punto rotar = null, Punto escalar = null, Punto trasladar = null)
+        {
+            if (rotar != null)
+            {
+                rotacionX = rotar.X;
+                rotacionY = rotar.Y;
+                rotacionZ = rotar.Z;
+            }
+
+            if (escalar != null)
+            {
+                escalaX = escalar.X;
+                escalaY = escalar.Y;
+                escalaZ = escalar.Z;
+            }
+
+            if (trasladar != null)
+            {
+                centroMasa.X = trasladar.X;
+                centroMasa.Y = trasladar.Y;
+                centroMasa.Z = trasladar.Z;
+            }
+        }
+
         public void Rotar(float? x = null, float? y = null, float? z = null)
         {
             if (x.HasValue) rotacionX += x.Value;
